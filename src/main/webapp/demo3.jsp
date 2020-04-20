@@ -54,33 +54,6 @@ if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i+
   -o-animation: blinkRed 0.5s infinite;
   animation: blinkRed 0.5s infinite;
 }
-
-@-webkit-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
-}
-@-moz-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
-}
-@-ms-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
-}
-@-o-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
-}
-@keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
-}
-
 .led-yellow {
   margin: 0 auto;
   width: 24px;
@@ -93,32 +66,6 @@ if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i+
   -ms-animation: blinkYellow 1s infinite;
   -o-animation: blinkYellow 1s infinite;
   animation: blinkYellow 1s infinite;
-}
-
-@-webkit-keyframes blinkYellow {
-    from { background-color: #FF0; }
-    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
-    to { background-color: #FF0; }
-}
-@-moz-keyframes blinkYellow {
-    from { background-color: #FF0; }
-    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
-    to { background-color: #FF0; }
-}
-@-ms-keyframes blinkYellow {
-    from { background-color: #FF0; }
-    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
-    to { background-color: #FF0; }
-}
-@-o-keyframes blinkYellow {
-    from { background-color: #FF0; }
-    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
-    to { background-color: #FF0; }
-}
-@keyframes blinkYellow {
-    from { background-color: #FF0; }
-    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }
-    to { background-color: #FF0; }
 }
 
 .led-green {
@@ -153,21 +100,16 @@ body {
 	vertical-align: middle;
 	display: table-cell;
 }
-
-#gauge_div {
-	width: 200px;
-	margin: 0 auto;
-}
 .columnA {
 	float: left;
-	width: 50%;
+	width: 40%;
 	padding: 15px;
 	text-align: left;
 }
 
 .columnB {
 	float: left;
-	width: 50%;
+	width: 60%;
 	padding: 15px;
 	text-align: justify;
 }
@@ -189,82 +131,6 @@ body {
 <script type='text/javascript'
 	src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-<script type='text/javascript'>
-$( function() {
-	  var $winHeight = $( window ).height()
-	  $( '.container' ).height( $winHeight );
-	});
-
-</script>
-<script type='text/javascript'>
-
-  // set your channel id here
-  var channel_id = 1011501;
-  // set your channel's read api key here if necessary
-  var api_key = '01SXSHLWO3F64JMV';
-  // maximum value for the gauge
-  var max_gauge_value = 200;
-  // name of the gauge
-  var gauge_name = 'Temp';
-
-  // global variables
-  var chart, charts, data;
-
-  // load the google gauge visualization
-  google.load('visualization', '1', {packages:['gauge']});
-  google.setOnLoadCallback(initChart);
-
-  // display the data
-  function displayData(point) {
-    data.setValue(0, 0, gauge_name);
-    data.setValue(0, 1, point);
-    chart.draw(data, options);
-  }
-
-  // load the data
-  function loadData() {
-    // variable for the data point
-    //var p;
-
-    // get the data from thingspeak
-    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function(data) {
-
-    	console.log(data);
-      // get the data point
-      var p = data.field1;
-
-      // if there is a data point display it
-      if (p) {
-        // p = Math.round((p / 1055) * 100);
-        p = (p / 1);
-        p = parseFloat(p.toFixed(1));
-        displayData(p);        	
-      }
-      
-
-    });
-  }
-
-  // initialize the chart
-  function initChart() {
-
-    data = new google.visualization.DataTable();
-    data.addColumn('string', 'Label');
-    data.addColumn('number', 'Value');
-    data.addRows(1);
-
-    chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
-    options = {width: 200, height: 200, min: 20, max: 200, redFrom: 165, redTo: 200, yellowFrom:155, yellowTo: 164, greenFrom: 135, greenTo: 154, minorTicks: 5};
-
-    loadData();
-
-    // load new data every 15 seconds
-    setInterval('loadData()', 15000);
-  }
-
-</script>
-
-
 </head>
 
 <body>
@@ -300,14 +166,14 @@ $( function() {
  </div>
 <div class= "columnB">
   <div id="inner" >
-			<div id="gauge_div"></div>
-			<div><iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShhISJyBggBa_F9oXtWbTY5HoLiQcMOQoXRy1o6dUb5N2clQc31nXobw0mEH0bupNx0CsTOc3F92V-/pubchart?oid=1789274436&amp;format=interactive"></iframe></div>
-		    <div><iframe width="229" height="142" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShhISJyBggBa_F9oXtWbTY5HoLiQcMOQoXRy1o6dUb5N2clQc31nXobw0mEH0bupNx0CsTOc3F92V-/pubchart?oid=1474302988&amp;format=interactive"></iframe></div>
-			<div><iframe width="248" height="153" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShhISJyBggBa_F9oXtWbTY5HoLiQcMOQoXRy1o6dUb5N2clQc31nXobw0mEH0bupNx0CsTOc3F92V-/pubchart?oid=818684227&amp;format=interactive"></iframe>
-	</div>	
+	<div ><iframe width="248" height="153" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShhISJyBggBa_F9oXtWbTY5HoLiQcMOQoXRy1o6dUb5N2clQc31nXobw0mEH0bupNx0CsTOc3F92V-/pubchart?oid=818684227&amp;format=interactive"></iframe>
+			<iframe width="285.5" height="153" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShhISJyBggBa_F9oXtWbTY5HoLiQcMOQoXRy1o6dUb5N2clQc31nXobw0mEH0bupNx0CsTOc3F92V-/pubchart?oid=1474302988&amp;format=interactive"></iframe></div>
+			<div><iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShhISJyBggBa_F9oXtWbTY5HoLiQcMOQoXRy1o6dUb5N2clQc31nXobw0mEH0bupNx0CsTOc3F92V-/pubchart?oid=1239054953&amp;format=interactive"></iframe></div>
+		
+		
 	</div>
 	</div>
 </div>
-</body>
+<body onload="setInterval(function() {window.location.reload();}, 5000);">
 </html>
 
