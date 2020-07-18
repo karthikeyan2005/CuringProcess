@@ -148,6 +148,7 @@
 .gfg {
 	font-size: 40px;
 	color: green;
+	display:block;
 	font-weight: bold;
 	text-align: center;
 }
@@ -157,34 +158,41 @@
 	text-align: center;
 	margin-bottom: 20px;
 }
-
-body {
-	background-colour: white;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
+.bondername{
+	font-size: 30px;
+	color: tomato;
+	display:block;
+	font-weight: bold;
+	text-align: left;
+}
+.topic{
+	font-size: 30px;
+	color: tomato;
+	display:block;
+	font-weight: bold;
+	text-align: left;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Oswald:300,400);
+
+
 </style>
+
 <body style="text-align: centre">
-
-	<div class="header">
-
-		<div class="gfg">Curing Process Management</div>
-	</div>
+	<div class="header">		
+		<span class="gfg">Curing Process Management </span>
+		</div>
 
 
-	<div class="nav_menu">
-		<a href="LoginMailId"><button class="btn">Login</button></a> 
-		<a href="demo.jsp"><button class="btn">Monitor</button></a> 
-		<a href="Bonders.jsp"><button class="btn">BonderDetails</button></a> 
-		<a href="Admins"><button class="btn">AdminDetails</button></a> 
-		<a href="Operators"><button class="btn">BonderOperator</button></a> 
-		<a href="#"><button class="btn">ShiftDetails</button></a> 
-		<a href="#"><button class="btn">DataSheet</button></a> 
-		<a href="https://docs.google.com/spreadsheets/d/19Gl8E6VnJoZKbwYBM46BCgzAS6vm-YS6vHy3uOLSN7A/edit#gid=0"><button class="btn">WarningSheet</button></a>
-		<a href="#"><button class="btn">TyresData</button></a>
-		<a href="#"><button class="btn">LogOut</button></a>
+
+	<div class="nav_menu"> 
+		<a href="dashboard.jsp"><button class="btn">Dashboard</button></a>
+		<a href="visual.jsp"><button class="btn">Visualization</button></a> 
+		<a href="bonderlogger.jsp"><button class="btn">BonderDetails</button></a> 
+		<a href="indication.jsp"><button class="btn">Indication details</button></a> 
+		<a href="https://drive.google.com/drive/u/3/folders/1LivPO8RAMze6PgufGhk5_xErnOadCsV4"><button class="btn">DataSheet</button></a>
+		<a href="warninglogs.jsp"><button class="btn">Warning Records</button></a>
+		<a href="LogoutServlet"><button class="btn">LogOut</button></a>
 		
 	</div>
 </body>

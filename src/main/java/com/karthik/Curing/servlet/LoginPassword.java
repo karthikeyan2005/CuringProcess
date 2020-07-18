@@ -29,16 +29,12 @@ public class LoginPassword extends HttpServlet {
 			String Pass = user1.password(mail);
 			if (Pass.equals(password))
 			{
-				//String username = user1.userName(mail);
-				//session.setAttribute("username", username);
-				//session.setAttribute("Usermail",mail);
-				//System.out.println(username);
-				response.sendRedirect("nav1.jsp");
+				response.sendRedirect("Index.jsp");
 			}
 			else
 			{
 				String error = "Incorrect Password";
-				response.sendRedirect("LoginPassword.jsp?result="+error);
+				response.sendRedirect("LoginPass.jsp?result="+error);
 			}
 		}
 		catch (DbException e) {

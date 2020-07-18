@@ -68,7 +68,7 @@ input[type=number] {
 		<input type="number" name="rating" size=25 placeholder="enter present status of boiler"  required /> <br /> 
 		
 		<br><br>
-		<input type="submit" value="Save To Boilers" class="btn btn-success" /> <br> <br>
+		<input type="submit" value="Save To Bonders" class="btn btn-success" /> <br> <br>
 		<%
 			String result = (String) request.getParameter("result");
 			if (result != null) {

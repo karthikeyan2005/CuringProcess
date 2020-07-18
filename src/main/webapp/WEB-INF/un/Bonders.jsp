@@ -43,11 +43,78 @@
 	color: white;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+  
+  var script_url = "https://script.google.com/macros/s/AKfycbyc70JlQ4NGDun9D-Ooh0uxfuy0Z1i5ObMmW7JId9ppaKHTw0g/exec";
 
+
+  
+function read_value() {
+
+ var url = script_url+"?action=read";
+
+$.getJSON(url, function (json) {
+
+    // Set the variables from the results array 
+   
+  
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+		
+
+        var header = table.createTHead();
+		var row = header.insertRow(0);     
+		var cell1 = row.insertCell(0);
+		var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+		var cell4 = row.insertCell(3);
+		var cell5 = row.insertCell(4);
+		var cell6 = row.insertCell(5);
+		var cell7 = row.insertCell(6);
+		var cell8 = row.insertCell(7);
+		var cell9 = row.insertCell(8);
+		
+	
+		cell1.innerHTML = "<b>Bonder Name</b>";
+		cell2.innerHTML = "<b>Bonder Id</b>";
+		cell3.innerHTML = "<b>Bonder Capacity</b>";
+		cell4.innerHTML = "<b>Max Temperature</b>";
+		cell5.innerHTML = "<b>Max Pressure</b>";
+		cell6.innerHTML = "<b>Install Date</b>";
+		cell7.innerHTML = "<b>Recent Operated Date</b>";
+		cell8.innerHTML = "<b>Recent Operated Time</b>";
+		cell9.innerHTML = "<b>Recent Operated Temperature</b>";
+		
+        
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < json.records.length; i++) {
+
+            tr = table.insertRow(-1);
+				var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = json.records[i].ID;
+				tabCell = tr.insertCell(-1);
+				tabCell.innerHTML = json.records[i].NAME;
+            }
+      
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+		
+		
+    });
+	}
+
+read_value(); 
+</script> 
 
 </head>
 <body>
-	<jsp:include page="nav1.jsp"></jsp:include>
+	<jsp:include page="Index.jsp"></jsp:include>
 	<%
 		BonderDAOImpl as = new BonderDAOImpl();
 			ArrayList<Bonders> list  = as.bonderList();
@@ -82,6 +149,7 @@
 				</c:forEach>
 				</tbody>
 		</table>
+		<div id="showData"></div>
 	</center>
 	<br>
 	<div style="text-align: center">

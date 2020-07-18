@@ -30,7 +30,7 @@ public class LogInMail extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("Usermail", email);
 				System.out.println(email);
-				response.sendRedirect("LoginPassword.jsp?mail="+email+"");
+				response.sendRedirect("LoginPass.jsp?mail="+email+"");
 			}
 			else {
 				String error = "UserMail Does Not Exists";

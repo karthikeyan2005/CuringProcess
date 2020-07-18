@@ -35,16 +35,9 @@ public class SignUpServlet extends HttpServlet {
 			if (a == true)
 			{
 				String error = "User Mail Already Exists";
-				response.sendRedirect("Register.jsp?result="+error);
+				response.sendRedirect("SignUp.jsp?result="+error);
 			}
 			else {
-				/*HttpSession session = request.getSession();
-				int otp = OTPUtil.getOTP();	
-				session.setAttribute("OTP", otp);
-				session.setAttribute("username", username);
-				session.setAttribute("MailIdRegister", mail);
-				session.setAttribute("PasswordRegister", password);
-				TestConformEmail.otpjsp(otp, mail);*/
 				user1.register(employeeid1, employeename, designation, email, password, mobilenumber);
 				RequestDispatcher d = request.getRequestDispatcher("nav1.jsp");
 				d.forward(request, response);		
